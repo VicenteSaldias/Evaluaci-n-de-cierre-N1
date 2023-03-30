@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <title>INDEX</title>
+    </head>
+    <body>
+        <nav>
+           <a href="index.html">Vicente Saldías</a>
+            <a href="page-1.html">Primero</a>
+            <a href="page-2.html">Segundo</a>
+            <a href="page-3.html">Tercero</a>
+            <a href="page-4.html">Cuarto</a>
+        </nav>
+        <main></main>
+        <aside>
+            <p>Hola me llamo vicente y esta es mi segunda pagina correspondiente a la clase de Introducción al Desarrollo Front End con HTML, CSS y JavaScript</p>
+        </aside>
+        <script>
+            function setup() {
+                createCanvas(windowWidth, windowHeight);
+                selectAll("a")[0].addClass("aqui");
+            }
+
+            function draw() {
+                background(220, 200, 200);
+                textSize(100);
+                textAlign(CENTER, CENTER);
+                text("🥑", mouseX, mouseY);
+            }
+        </script>
+    </body>
+</html>
