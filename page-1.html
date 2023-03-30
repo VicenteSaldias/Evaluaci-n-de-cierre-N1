@@ -1,13 +1,19 @@
 <!DOCTYPE html>
+
 <html lang="es">
+    
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css" />
-        <title>PAGE 1</title>
+        <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+        <title>PRIMERO</title>
+        <meta name="description" content="Evaluación de cierre de la Unidad I: Bocetos de introducción a la programación" />
     </head>
+    
     <body>
+        
         <nav>
             <a href="index.html">Vicente Saldías</a>
             <a href="page-1.html">Primero</a>
@@ -15,37 +21,53 @@
             <a href="page-3.html">Tercero</a>
             <a href="page-4.html">Cuarto</a>
         </nav>
+        
         <main></main>
-      <aside>
-        <p>Hue</p>
-        <p>Saturation</p>
-        <p>Brightness</p>
         
+        <div>
+            <p id="primerP">Ajuste de <em>Hue</em></p>
+            <p id="segundoP">Ajuste de <em>Saturation</em></p>
+            <p id="tercerP">Ajuste de <em>Brightness</em></p>
+        </div>
         
-        </aside>
         <script>
-           var elSlider;
-
+            
+            var sliderH;
+            var sliderS;
+            var sliderB;
+            
             function setup() {
                 createCanvas(windowWidth, windowHeight).position(0, 0).style("z-index", -1);
-                selectAll("a")[3].addClass("aqui");
-                var donde = select("p");
-                elSlider = createSlider(0, 360, 0).parent(donde);
+                selectAll("a")[1].addClass("aqui");
+                selectAll(".miNombre").forEach((n) => {
+                    n.html("Vicente Saldías");
+                });
                 colorMode(HSB, 360, 100, 100);
-                elSlider = createSlider(360, 0, 0).parent(donde);
-                colorMode(HSB, 360, 100, 100);
-                 elSlider = createSlider(0, 360, 0).parent(donde);
-                colorMode(HSB, 360, 100, 100);
-                
+                var hue = select("#primerP");
+                var saturation = select("#segundoP");
+                var brightness = select("#tercerP");
+                sliderH = createSlider (0,360,0).parent(hue);
+                sliderS = createSlider (0,100,0).parent(saturation);
+                sliderB = createSlider (0,100,0).parent(brightness);
             }
 
-                function draw() {
-                background(elSlider.value(), 100, 150);
-                text("H" + elSlider.value() + "° S 100% B 100%", windowWidth - 200, windowHeight - 50);
+            function draw() {
+                var h = sliderH.value();
+                var s = sliderS.value();
+                var b = sliderB.value();
+                
+                background(h, s, b);
+                fill("#dddddd");
+                textAlign(CENTER, CENTER);
+                textSize(20);
+                text("H " + Math.floor(h) + "º S " + Math.floor(s) + "% B " + Math.floor(b) + "%", windowWidth / 2, windowHeight - 40);
             }
+
             function windowResized() {
-                resizedCanvas(windowWidth, windowHeight);
+                resizeCanvas(windowWidth, windowHeight);
             }
         </script>
+        
     </body>
+    
 </html>

@@ -1,46 +1,72 @@
 <!DOCTYPE html>
+
 <html lang="es">
+    
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
         <title>SEGUNDO</title>
         <meta name="description" content="Evaluación de cierre de la Unidad I: Bocetos de introducción a la programación" />
     </head>
+    
     <body>
+        
         <nav>
-            <a href="index.html">Vicente Saldías</a>
+          <a href="index.html">Vicente Saldías</a>
             <a href="page-1.html">Primero</a>
             <a href="page-2.html">Segundo</a>
             <a href="page-3.html">Tercero</a>
             <a href="page-4.html">Cuarto</a>
         </nav>
+        
         <main></main>
         
+        <div>
+            <p id="primerP">Ajuste de <em>Red</em></p>
+            <p id="segundoP">Ajuste de <em>Green</em></p>
+            <p id="tercerP">Ajuste de <em>Blue</em></p>
+        </div>
+        
         <script>
+            
             var sliderR;
             var sliderG;
             var sliderB;
+            
             function setup() {
                 createCanvas(windowWidth, windowHeight).position(0, 0).style("z-index", -1);
                 selectAll("a")[2].addClass("aqui");
                 selectAll(".miNombre").forEach((n) => {
-                    n.html("Nombre Apellido");
+                    n.html("Vicente Saldías");
                 });
+                colorMode(RGB, 255, 255, 255);
+                var red = select("#primerP");
+                var green = select("#segundoP");
+                var blue = select("#tercerP");
+                sliderR = createSlider (0,255,0).parent(red);
+                sliderG = createSlider (0,255,0).parent(green);
+                sliderB = createSlider (0,255,0).parent(blue);
             }
 
             function draw() {
-                background-color: white
+                var r = sliderR.value();
+                var g = sliderG.value();
+                var b = sliderB.value();
+                background(r, g, b);
                 fill("#dddddd");
                 textAlign(CENTER, CENTER);
                 textSize(20);
-                text("R " + "número" + " G " + "número" + " B " + "número", windowWidth / 2, windowHeight - 40);
+                text("R " + Math.floor(r) + " G " + Math.floor(g) + " B " + Math.floor(b), windowWidth / 2, windowHeight - 40);
             }
 
             function windowResized() {
                 resizeCanvas(windowWidth, windowHeight);
             }
         </script>
+        
     </body>
+    
 </html>
